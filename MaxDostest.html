@@ -4,64 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Document</title>
-</head>
-<body>
 
-
-
-    
-<ol></ol>
-
-    <script>
-
-
-let ol = document.querySelector("ol")
-let userId = localStorage.getItem("userId")
-let carts = "https://dummyjson.com/carts/user/"+userId
-let URL = "https://dummyjson.com/users/"+userId
-
-async function loadUsers(){
-    const response = await fetch(URL)
-    return await response.json()
-}
-
-async function loadcarts(){
-    const response = await fetch(carts)
-    return await response.json()
-}
-
-ol.innerHTML = `<li>${userId}</li>`
-
-async function showUsers(){
-    const user = await loadUsers()
-    ol.innerHTML += `<li>${user.firstName}${user.lastName} ${user.bank.iban} ${user.address.address}</li>`
-    const  {carts}  = await loadcarts()
-    
-    for (const userCart of carts) {
-     for (const item of userCart.products) {
-        ol.innerHTML += `<li>${item.id}  ${item.title}</li>`
-     }
-    }
-    
-
-}
-showUsers()
-
-
-
-
-
-
-    </script>
-=======
     <title>MaxDostest</title>
 </head>
 <body>
+    <ol></ol>
+
+    <script>
+    let ol = document.querySelector("ol")
+    let userId = localStorage.getItem("userId")
+    let carts = "https://dummyjson.com/carts/user/"+userId
+    let URL = "https://dummyjson.com/users/"+userId
+
+    async function loadUsers(){
+        const response = await fetch(URL)
+        return await response.json()
+    }
+
+    async function loadcarts(){
+        const response = await fetch(carts)
+        return await response.json()
+    }
+
+    ol.innerHTML = `<li>${userId}</li>`
+
+    async function showUsers(){
+        const user = await loadUsers()
+        ol.innerHTML += `<li>${user.firstName}${user.lastName} ${user.bank.iban} ${user.address.address}</li>`
+        const  {carts}  = await loadcarts()
+        
+        for (const userCart of carts) {
+        for (const item of userCart.products) {
+            ol.innerHTML += `<li>${item.id}  ${item.title}</li>`
+        }
+        }
     
-    <h1>Maxmaro</h1>
-    <h2>Max</h2>
->>>>>>> 4f4f764840cc22540d2d8336e09f6aab2cf67aa2
+
+    }
+    showUsers()
+    </script>
 </body>
 </html>
