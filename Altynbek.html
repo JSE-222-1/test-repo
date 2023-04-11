@@ -21,7 +21,7 @@
 
 <script>
 let ol = document.querySelector("ol")
-let URL = "https://jsonplaceholder.typicode.com/todos/1"
+let URL = "https://dummyjson.com/users?limit/=100&skip=0"
 async function loadUsers(){
     const response = await fetch(URL)
     return await response.json()
