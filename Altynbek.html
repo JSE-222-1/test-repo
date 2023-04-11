@@ -9,7 +9,9 @@
 <body>
     
 
-<h1>Altynbek's page</h1>
+<ol>
+
+</ol>
 
 
 
@@ -17,7 +19,29 @@
 
 
 
+<script>
+let ol = document.querySelector("ol")
+let URL = "https://jsonplaceholder.typicode.com/todos/1"
+async function loadUsers(){
+    const response = await fetch(URL)
+    return await response.json()
+}
 
+async function showUsers(){
+    const { users } = await loadUsers()
+    ol.innerHTML="";
+    for (const user of users) {
+        ol.innerHTML+=`<li onclick="getId(${user.id})">${user.firstName} ${user.lastName}</li>`
+    }
+}
+showUsers()
+
+function getId(userId){
+    localStorage.setItem("userId", userId)
+    window.open("MaxDostest.html")
+}
+
+</script>
 
 
 

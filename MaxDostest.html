@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+let ol = document.querySelector("ol")
+let userId = localStorage.getItem("userId")
+let carts = "https://dummyjson.com/carts/user/"+userId
+let URL = "https://dummyjson.com/users/"+userId
+
+async function loadUsers(){
+    const response = await fetch(URL)
+    return await response.json()
+}
+
+async function loadcarts(){
+    const response = await fetch(carts)
+    return await response.json()
+}
+
+ol.innerHTML = `<li>${userId}</li>`
+
+async function showUsers(){
+    const user = await loadUsers()
+    ol.innerHTML += `<li>${user.firstName}${user.lastName} ${user.bank.iban} ${user.address.address}</li>`
+    const  {carts}  = await loadcarts()
+    
+    for (const userCart of carts) {
+     for (const item of userCart.products) {
+        ol.innerHTML += `<li>${item.id}  ${item.title}</li>`
+     }
+    }
+    
+
+}
+showUsers()
+
+
+
+
+
+
+    </script>
+</body>
+</html>
