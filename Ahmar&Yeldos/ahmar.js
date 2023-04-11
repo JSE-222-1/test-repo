@@ -11,6 +11,7 @@ async function drawUsers() {
         let pUserName = document.createElement(`p`)
         userDiv.setAttribute(`userId`, `${user.id}`)
         userDiv.classList.add(`user__div`)
+        userDiv.style.border = `1px black solid`
         userDiv.style.cursor = `pointer`
         pName.innerHTML = `${user.name}`
         pUserName.innerHTML = `${user.username}`
